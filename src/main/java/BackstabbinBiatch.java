@@ -16,10 +16,10 @@ public class BackstabbinBiatch extends AdvancedRobot
 	 * run: BackstabbinBiatch's default behavior
 	 */
 	public void run() {
+			setColors(Color.YELLOW, Color.BLACK, Color.YELLOW);
 			setAdjustRadarForRobotTurn(true);
 			setAdjustGunForRobotTurn(true);
 			turnRadarRightRadians(Double.POSITIVE_INFINITY);
-			setColors(Color.yellow, Color.yellow, Color.yellow);
 	}
 
 	/**
