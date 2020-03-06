@@ -26,6 +26,12 @@ public class BackstabbinBiatch extends AdvancedRobot
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
+		if (e.getName().contains("Dumle")) {
+			return;
+		}
+		if (e.getName().contains("Roomba")) {
+			return;
+		}
 		double enemy = e.getBearingRadians() + getHeadingRadians();
 		double velocity = e.getVelocity() * Math.sin(e.getHeadingRadians() -enemy);
 		setTurnRadarLeftRadians(getRadarTurnRemainingRadians());
