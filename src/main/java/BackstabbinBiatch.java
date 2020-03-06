@@ -19,11 +19,7 @@ public class BackstabbinBiatch extends AdvancedRobot
 			setAdjustRadarForRobotTurn(true);
 			setAdjustGunForRobotTurn(true);
 			turnRadarRightRadians(Double.POSITIVE_INFINITY);
-			setBodyColor(Color.yellow);
-			setGunColor(Color.yellow);
-			setRadarColor(Color.yellow);
-			setScanColor(Color.yellow);
-			setBulletColor(Color.yellow);
+			setColors(Color.yellow, Color.yellow, Color.yellow);
 	}
 
 	/**
