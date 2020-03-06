@@ -1,6 +1,6 @@
 
 import robocode.*;
-//import java.awt.Color;
+import java.awt.Color;
 
 
 
@@ -9,35 +9,38 @@ import robocode.*;
 /**
  * BackstabbinBiatch - a robot by (your name here)
  */
-public class BackstabbinBiatch extends Robot
+public class BackstabbinBiatch extends AdvancedRobot
 {
+	int forward=1;
 	/**
 	 * run: BackstabbinBiatch's default behavior
 	 */
 	public void run() {
-		// Initialization of the robot should be put here
-
-		// After trying out your robot, try uncommenting the import at the top,
-		// and the next line:
-
-		// setColors(Color.red,Color.blue,Color.green); // body,gun,radar
-
-		// Robot main loop
-		while(true) {
-			// Replace the next 4 lines with any behavior you would like
-			ahead(100);
-			turnGunRight(360);
-			back(100);
-			turnGunRight(360);
-		}
+			setAdjustRadarForRobotTurn(true);
+			setAdjustGunForRobotTurn(true);
+			turnRadarRightRadians(Double.POSITIVE_INFINITY);
+			setBodyColor(Color.yellow);
+			setGunColor(Color.yellow);
+			setRadarColor(Color.yellow);
+			setScanColor(Color.yellow);
+			setBulletColor(Color.yellow);
 	}
 
 	/**
 	 * onScannedRobot: What to do when you see another robot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
-		// Replace the next line with any behavior you would like
-		fire(1);
+		double enemy = e.getBearingRadians() + getHeadingRadians();
+		double velocity = e.getVelocity() * Math.sin(e.getHeadingRadians() -enemy);
+		setTurnRadarLeftRadians(getRadarTurnRemainingRadians());
+		if(Math.random()>.9){
+			setMaxVelocity((12*Math.random())+12);
+		}
+		
+		setTurnGunRightRadians(robocode.util.Utils.normalRelativeAngle(enemy- getGunHeadingRadians()+velocity/22));
+		setTurnRightRadians(robocode.util.Utils.normalRelativeAngle(enemy-getHeadingRadians()+velocity/getVelocity()));
+		setAhead((e.getDistance() - 140)*forward);
+		setFire(3);
 	}
 
 	/**
@@ -52,8 +55,12 @@ public class BackstabbinBiatch extends Robot
 	 * onHitWall: What to do when you hit a wall
 	 */
 	public void onHitWall(HitWallEvent e) {
-		// Replace the next line with any behavior you would like
-		back(20);
+		forward=-forward;
 	}	
+	
+	public void onDeath(DeathEvent event) {
+		onDeath(event);
+	}
+
 }
 
