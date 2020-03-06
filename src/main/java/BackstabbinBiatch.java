@@ -30,13 +30,26 @@ public class BackstabbinBiatch extends AdvancedRobot
 		double velocity = e.getVelocity() * Math.sin(e.getHeadingRadians() -enemy);
 		setTurnRadarLeftRadians(getRadarTurnRemainingRadians());
 		if(Math.random()>.9){
-			setMaxVelocity((12*Math.random())+12);
+			setMaxVelocity((12*Math.random())+15);
 		}
 		
+
 		setTurnGunRightRadians(robocode.util.Utils.normalRelativeAngle(enemy- getGunHeadingRadians()+velocity/22));
 		setTurnRightRadians(robocode.util.Utils.normalRelativeAngle(enemy-getHeadingRadians()+velocity/getVelocity()));
-		setAhead((e.getDistance())*forward);
-		setFire(3);
+
+		
+		if (e.getDistance() <= 50) {
+			setFire(5);
+		} else {
+			setAhead((e.getDistance())*forward);
+			if (e.getDistance() <= 100) {
+				setFire(3);
+			} else {
+				setFire(1);
+			
+			}
+		}
+
 		
 	}
 
