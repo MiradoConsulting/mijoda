@@ -1,6 +1,8 @@
-package dummy;
+
 import robocode.*;
 //import java.awt.Color;
+
+
 
 // API help : http://robocode.sourceforge.net/docs/robocode/robocode/Robot.html
 
