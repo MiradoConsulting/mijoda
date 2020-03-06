@@ -44,9 +44,10 @@ public class BackstabbinBiatch extends AdvancedRobot
 		setTurnRightRadians(robocode.util.Utils.normalRelativeAngle(enemy-getHeadingRadians()+velocity/getVelocity()));
 
 		
-		if (e.getDistance() <= 70) {
+		if (e.getDistance() <= 90) {
 			setFire(5);
-			setAhead(-1);
+			setAhead(-5);
+			setTurnRightRadians(1.5);
 		} else {
 			setAhead((e.getDistance())*forward);
 			if (e.getDistance() <= 100) {
