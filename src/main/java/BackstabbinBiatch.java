@@ -37,10 +37,12 @@ public class BackstabbinBiatch extends AdvancedRobot
 			setMaxVelocity((12*Math.random())+12);
 		}
 		
+
 		setTurnGunRightRadians(robocode.util.Utils.normalRelativeAngle(enemy- getGunHeadingRadians()+velocity/22));
 		setTurnRightRadians(robocode.util.Utils.normalRelativeAngle(enemy-getHeadingRadians()+velocity/getVelocity()));
-		setAhead((e.getDistance() - 140)*forward);
+		setAhead((e.getDistance())*forward);
 		setFire(3);
+		
 	}
 
 	/**
@@ -58,9 +60,7 @@ public class BackstabbinBiatch extends AdvancedRobot
 		forward=-forward;
 	}	
 	
-	public void onDeath(DeathEvent event) {
-		onDeath(event);
-	}
+
 
 }
 
