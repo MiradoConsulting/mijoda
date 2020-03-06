@@ -46,6 +46,7 @@ public class BackstabbinBiatch extends AdvancedRobot
 		
 		if (e.getDistance() <= 50) {
 			setFire(5);
+			setAhead(0);
 		} else {
 			setAhead((e.getDistance())*forward);
 			if (e.getDistance() <= 100) {
